@@ -39,9 +39,15 @@ defmodule Cards do
   end
 
   @doc """
-    Returns the dealed cards given the hand_size.
-    Example:
-    iex> deal(deck, 3)
+    Divides a deck into a hand.
+    The `hand_size` argument indicates how many cards should be in the hand.
+
+  ## Examples
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.deal(deck, 3)
+      ["Ace of ♣", "Two of ♣", "Three of ♣"]
+
   """
   def deal(deck, hand_size) do
     with {splitted_deck, _} <- Enum.split(deck, hand_size) do
@@ -70,6 +76,13 @@ defmodule Cards do
 
   @doc """
     Check if a given card is in the deck. Returns a truthy or falsy value.
+
+  ## Examples
+
+      iex> deck = Cards.create_deck()
+      iex> Cards.contains?(deck, "Ace of ♣")
+      true
+
   """
   def contains?(deck, card) do
     card
